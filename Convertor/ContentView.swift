@@ -1,36 +1,28 @@
-//
-//  ContentView.swift
-//  Convertor
-//
-//  Created by JFJ on 11/01/2020.
-//  Copyright © 2020 JFJ. All rights reserved.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 0
- 
     var body: some View {
-        TabView(selection: $selection){
-            Text("First View")
-                .font(.title)
+        TabView {
+            Converter(method: .temperature)
                 .tabItem {
-                    VStack {
-                        Image("first")
-                        Text("First")
-                    }
-                }
-                .tag(0)
-            Text("Second View")
-                .font(.title)
+                    Image(systemName: "thermometer")
+                    Text("Temperature")
+                }.tag(0)
+            Converter(method: .lenght)
                 .tabItem {
-                    VStack {
-                        Image("second")
-                        Text("Second")
-                    }
-                }
-                .tag(1)
+                    Image(systemName: "slash.circle")
+                    Text("Length")
+                }.tag(1)
+            Converter(method: .time)
+                .tabItem {
+                    Image(systemName: "stopwatch")
+                    Text("Time")
+                }.tag(2)
+            Converter(method: .volume)
+                .tabItem {
+                    Image(systemName: "cube")
+                    Text("Volume")
+                }.tag(3)
         }
     }
 }
